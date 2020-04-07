@@ -26,6 +26,7 @@ fetch(URL)
        let newsItem = ''
        articles.forEach(article => {
          newsItem += `
+         
      <div class="news-item">
              <div class="news-image">
                   <img src = "${article.urlToImage}"width="320" height="220"></img>
@@ -39,6 +40,9 @@ fetch(URL)
           <div class="news-url"> 
              <a href="${article.url}">Go To This Page</a>
           </div>  
+          <div class="news-published"> 
+          <a href="${article.published}">Published:</a>
+       </div>  
       </div>`
        });
        
