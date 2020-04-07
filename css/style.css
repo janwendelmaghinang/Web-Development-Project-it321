@@ -24,13 +24,24 @@
     max-width: 1024px;
     margin: auto;
   }
-  
+ .form-source{
+   display: none;
+ }
+ .source-show{
+   display: block;
+ }
+ .source-show .formControl{
+    width: 500px;
+}
+ .fhide{
+  display: none;
+ }
   .forms{
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
     justify-items: center;
+    align-items: center;
     
   }
   .formControl{
@@ -38,37 +49,63 @@
     border-radius: 20px;
     border: none;
     padding: 8px;
+    outline: none;
   }
+  .hide{
+    display: none;
+  }
+ 
   /* NEws Container */
-  .news {
+
+  .news-container .news {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
     margin-top: 1rem;
+    padding: 0;
   }
-  
   .news .news-item {
-    padding: 1rem;
-    border: 1px solid #333;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
+    display: grid;
+    grid-template-rows: 1fr;
+    background-color: #ffffff;
+    
   }
-  .news .news-item .news-url a {
+  .news-item .news-url{
+    display: flex;
+    align-content: center;
+  }
+  .news .news-item .news-url a{
     text-decoration: none;
     list-style: none;
     background-color: black;
     color: #fff;
-    padding: 0.5rem;
+ 
   }
-  
-  .news h1 {
+  .news-item .news-image img{
+    width: 100%;
+    height: 220px;
+    padding: 0;
+    margin: 0;
+  }
+
+ 
+  .news-item .news-title h1{
     font-size: 1rem;
   }
+
   .news .news-item .news-desc p{
     font-size: 1rem;
+   
   }
   
+  .news .news-item .news-source h1{
+    font-size: 15px;
+    opacity: .8;
+    color: black;
+  }
+  .news-source, .news-title , .news-desc , .news-url {
+    padding: 1rem;
+  }
   /* navigation  */
   header h1{
     
@@ -78,7 +115,6 @@
     display: flex;
     align-items: center;
   }
-  
   nav ul {
     list-style: none;
     padding: 0;
@@ -86,16 +122,13 @@
   
   nav ul li {
     display: inline-block;
-    
   }
-  
   nav ul li a {
     display: block;
     text-decoration: none;
     color: #fff;
     padding: 1rem;
   }
-  
   nav ul li a:hover {
     background: #fff;
     color: green;
@@ -105,3 +138,5 @@
     background: rgb(141, 192, 177);
     margin-top: 0;
   }
+/* toggle */
+
