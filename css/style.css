@@ -20,6 +20,10 @@
   .theme button{
     border-radius: 16px;
   }
+  .toggle-container :active{
+    background: black;
+    color: white;
+  }
   .news-container {
     max-width: 1024px;
     margin: auto;
