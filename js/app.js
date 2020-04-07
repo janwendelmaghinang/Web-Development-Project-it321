@@ -28,7 +28,7 @@ fetch(URL)
          newsItem += `
      <div class="news-item">
              <div class="news-image">
-                  <img src = "${article.urlToImage}"width="300" height="300"></img>
+                  <img src = "${article.urlToImage}"width="320" height="220"></img>
              </div>
           <div class="news-title">   
              <h1> ${article.title} </h1> 
@@ -37,7 +37,7 @@ fetch(URL)
              <p> ${article.description} </p>   
           </div>
           <div class="news-url"> 
-             <a href="${article.url}">Go To Page</a>
+             <a href="${article.url}">Go To This Page</a>
           </div>  
       </div>`
        });

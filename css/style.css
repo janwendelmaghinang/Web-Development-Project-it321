@@ -14,7 +14,7 @@
     align-items: center;
     background: rgb(0, 119, 128);
     opacity: .8;
-    color: #ffffff;
+    color: #fff;
     padding: 1rem;
   }
   .theme button{
@@ -64,9 +64,12 @@
     list-style: none;
     background-color: black;
     color: #fff;
-    padding: 0.5rem;
+    padding: 10px;
+    border-radius: 2px;
+    font-size: 14px;
+   float: left;
+   margin-top: 1rem;
   }
-  
   .news h1 {
     font-size: 1rem;
   }
