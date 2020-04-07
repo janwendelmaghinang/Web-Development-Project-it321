@@ -24,18 +24,19 @@
     max-width: 1024px;
     margin: auto;
   }
-  
   .forms{
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
     justify-items: center;
-    
+    padding: 30px;
+    background: rgb(141, 192, 177);
+    margin-top: 0;
   }
   .formControl{
     width: 250px;
-    border-radius: 20px;
+    border-radius: 8px;
     border: none;
     padding: 8px;
   }
@@ -99,9 +100,13 @@
   nav ul li a:hover {
     background: #fff;
     color: green;
+    padding: 10px;
   }
-  .forms{
-    padding: 30px;
-    background: rgb(141, 192, 177);
-    margin-top: 0;
+  button:active{
+    background-color: black;
+    color: white;
+  }
+  .theme:active{
+    background-color: black;
+    color: white;
   }
