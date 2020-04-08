@@ -45,8 +45,8 @@
     
   }
   .formControl{
-    width: 250px;
-    border-radius: 20px;
+    width: 280px;
+    border-radius: 8px;
     border: none;
     padding: 8px;
     outline: none;
@@ -137,6 +137,20 @@
     padding: 30px;
     background: rgb(141, 192, 177);
     margin-top: 0;
+  }
+  button{
+    padding: 8px;
+    border-radius: 4px;
+    background: #fff;
+  }
+  button:active{
+    background: blue;
+    color: white;
+  }
+  .theme button{
+    border-radius: 2px solid white;
+    padding: 8px;
+    background: #fff;
   }
 /* toggle */
 
