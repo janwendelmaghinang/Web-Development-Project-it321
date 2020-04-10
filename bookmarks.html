@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New App Project</title>
+  <title>News App Project</title>
    <script src="https://kit.fontawesome.com/247cf9485d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
@@ -13,6 +13,7 @@
 </head>
 <body>
   <div id="theme" class="dark">
+    
   <header>
           <h1>News Search & Bookmark</h1>
           <nav>
@@ -20,23 +21,25 @@
               <li><a href="index.html">Top News</a></li>
               <li><a href="bookmarks.html">Bookmarks</a></li>
             </ul>
-            <div>
-                <button type="button" class="theme-change" ><i id="icon" class="fas fa-toggle-off"></i></button>
+            <div class="btn-theme">
+                <button type="button" class="theme-change">
+                <i class="fas fa-toggle-on"></i>
+                </button>
             </div>
           </nav>     
   </header>
   <!-- Forms Container -->
+  <div class="form-con" style="display: none;">
   <div class="forms">   
     <div class="form-country">      
         <select id="selectCountry" class="formControl"> 
-          <option value=""selected>select country</option>
           <option value="us">United States of America</option>
           <option value="gb">United Kingdom</option>
           <option value="ca">Canada</option>
           <option value="cn">China</option>
           <option value="ru">Russia</option>
           <option value="fr">France</option>
-          <option value="ph">Philippines</option>
+          <option value="ph"selected>Philippines</option>
           <option value="ae">United Arab Emirates</option>
           <option value="au">Australia</option>
           <option value="ar">Argentina</option>
@@ -189,18 +192,19 @@
         <option value="xinhua-net">Xinhua Net</option>
         <option value="ynet">Ynet</option>
       </select>
-  </div>
-        <div class="input">
-           <input id="search" type="text"placeholder = "search here"class="formControl">
-        </div>
-        <div class="formControl">
-          <button id="searchbtn" type="submit" value=""><i class="fas fa-search"></i></button>
+     </div>
+      <div class="input">
+           <input id="search" type="text"placeholder = "Search here" class="formControl">
+      </div>
+      <div class="formBtn">
+          <button class="sbtn" id="searchbtn"><i class="fas fa-search"></i></button>
           <button class="source"><i class="fas fa-exchange-alt"></i></button>
-        </div>
+      </div>
   </div>
+</div>
    <!-- result container -->
   <div class="result">
-        <h1 class="resultCount"></h1>
+        <div class="resultCount"></div>
   </div>
 <!-- News Container -->
   <div class="news-container">
@@ -208,8 +212,41 @@
     </div>
   </div>
 </div>
-<script src="./js/toggle.js"></script>
+
   <script src="./js/app.js"></script>
+  <script>
+    const news = document.querySelector('.news')
+    const articles = JSON.parse(localStorage.getItem('bookmarks'))
+    // const res = document.querySelector('.resultCount')
+       localStorage.setItem('bookmarks', JSON.stringify(articles));
+       let newsItem = ''
+                      articles.forEach(article => {
+                         newsItem += `
+                         <div class="news-item">
+                            <div class="news-image">
+                                  <img src = "${article.urlToImage}"></img>
+                            </div>
+                         <div class="news-title">   
+                            <h1> ${article.title} </h1> 
+                         </div>
+                         <div class="news-source"> 
+                            <h1>${article.source.name}</h1>
+                            </div>
+                         <div class="news-desc">
+                            <p> ${article.description}</p>   
+                         </div>
+                         <div class="news-url"> 
+                            <a href="${article.url}"target="_blank">Go To Page</a>
+                            <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
+                         </div>  
+                         <div class="news-published">
+                              <h1>${article.publishedAt}</h1>
+                         </div>
+                      </div>`
+                     });
+       news.innerHTML = newsItem
+
+</script>
   
 </body>
 </html>

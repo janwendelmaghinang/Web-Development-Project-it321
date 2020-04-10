@@ -4,57 +4,57 @@
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
-
   header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     opacity: .8;
     padding: 1rem;
   }
-  .theme button{
-    border-radius: 16px;
-  }
-  .news-container {
-    max-width: 1024px;
-    margin: auto;
-  }
+  
+  
+ 
   .form-source{
    display: none;
  }
  .form-show{
    display: block;
  }
- .source-show .formControl{
+  .form-show .formControl{
     width: 500px;
-}
+} 
  .fhide{
   display: none;
  }
   .forms{
     margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    justify-content: space-evenly;
     padding: 30px;
     margin-top: 0;
   }
-  .formControl{
-    width: 280px;
+  .formControl , .forms input{ 
+    width: 290px; 
     border-radius: 8px;
     border: none;
     padding: 8px;
     outline: none;
   }
-  .forms input{
-    width: 250px;
-    border-radius: 20px;
-    border: none;
-    padding: 8px;
-    outline: none;
-  } 
+  
   /* NEws Container */
+
+.result {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 15 px;
+}
+
+  .news-container {
+    max-width: 1024px;
+    margin: auto;
+  }
 
   .news {
     display: grid;
@@ -87,6 +87,11 @@
     padding: 0;
     margin: 0;
   }
+  div.news-image{
+    height: 220px;
+    padding: 0;
+    margin: 0;
+  }
   .news-item .news-title h1{
     font-size: 1rem;
   }
@@ -99,7 +104,7 @@
     color: black;
   }
   .news-item .news-published h1{
-    font-size: 0.5rem;
+    font-size: 0.8rem;
   }
   .news-source, .news-title , .news-desc , .news-url , .news-published {
     padding: 1rem;
@@ -131,6 +136,17 @@
   }
  
 /* toggle */
+
+.light .theme-change{
+  background-color: white;
+  outline: none;
+  border: none;
+}
+.dark .theme-change{
+  background: rgb(0, 119, 128);
+  outline: none;
+  border: none;
+}
 .dark{
   background-color: gray;
 }
@@ -198,8 +214,23 @@
   border: 1px solid gray;
 }
 /* responsive layout */
-    
-@media (max-width: 700px) {
+@media(max-width: 1000px){
+  .formControl{
+    max-width: 150px;
+  }
+  .news-container{
+    max-width: 800px;
+  }
+}
+@media(max-width: 800px){
+  .formControl{
+    max-width: 200px;
+  }
+  .news-container{
+    max-width: 700px;
+  }
+}
+@media(max-width: 700px){
   .news {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -209,22 +240,32 @@
     width: 100% ;
   }
 
-  .forms{
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    
-    margin-top: 0;
+  .formControl{
+    max-width: 150px;
   }
-
   .news-container {
     max-width: 600px;
     margin: auto;
   }
 }
+@media(max-width: 600px){
+  .news-container{
+    max-width: 550px;
+  }
+  .formControl{
+    max-width: 120px;
+  }
+}
+@media(max-width: 550px){
+  .news-container{
+    max-width: 550px;
+  }
+  .formControl{
+    max-width: 300px;
+  }
+}
     
-@media (max-width: 500px) {
+@media(max-width: 500px) {
   .news {
     display: grid;
     grid-template-columns: 1fr;
@@ -238,24 +279,70 @@
     margin: auto;
   }
   .forms{
-    grid-template-columns: 1fr;
+    display: grid;
     grid-gap: 1rem;
   }
 
-  button{
-    padding: 8px;
-    border-radius: 4px;
-    background: #fff;
+  .formBtn{
+    display: grid;
+    align-items: center;
+    justify-self: center;
+    grid-gap: 1rem;
+ 
   }
-  button:active{
-    background: blue;
+  
+  header h1{
+   text-align: center;
+  }
+  header nav .btn-theme{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  header{
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
+    }
+   header nav{
+     display: block;
+   }
+  header nav ul li 
+  {
+    display: block;
+  } 
+ .dark .sbtn{
+    background-color: black;
+    height: 2.3rem;
+    width: 290px;
     color: white;
+    outline: none;
+    border-radius: 8px ;
   }
-  .theme button{
-    border-radius: 2px solid white;
-    padding: 8px;
-    background: #fff;
+  .light .sbtn{
+    background-color: gray ;
+    height: 2.5rem;
+    width: 290px;
+    color: black;
+    outline: none;
+    border: none;
+    border-radius: 8px;
   }
-/* toggle */
-
-
+  .dark .source{
+    background-color: black;
+    height: 2.3rem;
+    width: 290px;
+    color: white;
+    outline: none;
+    border-radius: 8px ;
+  }
+  .light .source{
+    background-color: gray ;
+    height: 2.5rem;
+    width: 290px;
+    color: black;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+  }
+}

@@ -1,23 +1,24 @@
 
- 
- let selectionCountry = document.getElementById('selectCountry');
- let selectionCategory = document.getElementById('selectCategory');
- let selectionSources = document.getElementById('selectSources');
- let searchQuery = document.getElementById('search');
- let btnSearch = document.querySelector('#searchbtn');
+   
+   let selectionCountry = document.getElementById('selectCountry');
+   let selectionCategory = document.getElementById('selectCategory');
+   let selectionSources = document.getElementById('selectSources');
+   let searchQuery = document.getElementById('search');
+   let btnSearch = document.querySelector('#searchbtn');
+   const res = document.querySelector('.resultCount')
+   
+   const source = document.querySelector('.form-source');
+   const country = document.querySelector('.form-country');
+   const category = document.querySelector('.form-category');
+   const themeBtn = document.querySelector('.theme-change');
+   const btnChange = document.querySelector('.source');
+   const themes = document.querySelector('#theme');
+   const toggle = document.querySelector('.fas');
 
-
-const source = document.querySelector('.form-source');
-const country = document.querySelector('.form-country');
-const category = document.querySelector('.form-category');
-const themeBtn = document.querySelector('.theme-change');
-const btnChange = document.querySelector('.source');
-const themes = document.querySelector('#theme');
-const toggle = document.querySelector('.fas');
 
  themeBtn.onclick = function (){
-    themes.classList.toggle('light')
-    themes.classList.toggle('dark')
+     themes.classList.toggle('light')
+     themes.classList.toggle('dark')
      toggle.classList.toggle('fa-toggle-off')
      toggle.classList.toggle('fa-toggle-on')
  }
@@ -33,7 +34,7 @@ const toggle = document.querySelector('.fas');
       category.classList.toggle('form-category')
 
       selectionCategory.options.selectedIndex = 0;
-      selectionCountry.options.selectedIndex = 0;
+      selectionCountry.options.selectedIndex = 6;
 
        if(source.className == "form-source"){
          a();
@@ -42,11 +43,11 @@ const toggle = document.querySelector('.fas');
          b();
         }
      }
-         if(source.className == "form-source"){
+        if(source.className == "form-source"){
             a();
-         } 
+        } 
 
-         // const URL = 'https://newsapi.org/v2/top-headlines?&apiKey=ff55591e19c74c018563bc1852ae1dde&country=ph&category=health&q=&page=1&pageSize=50'
+         // const URL = 'https://newsapi.org/v2/top-headlines?&apiKey=ff55591e19c74c018563bc1852ae1dde&country=ph&category=health&page=1&pageSize=50'
          // const news = document.querySelector('.news')
          // fetch(URL)
          //    .then(data => data.json())
@@ -85,18 +86,22 @@ const toggle = document.querySelector('.fas');
 
 
    function a(){
-            btnSearch.onclick = function loadUsers(){
-                console.log('hi')
+            btnSearch.onclick = function loadUsers(){ 
                 var country = selectionCountry.options[selectionCountry.selectedIndex].value;  
                 var category = selectionCategory.options[selectionCategory.selectedIndex].value;
-            
+
                 const URL = 'https://newsapi.org/v2/top-headlines?q='+searchQuery.value+'&apiKey=ff55591e19c74c018563bc1852ae1dde&country='+country+'&category='+category+'&q=&page=1&pageSize=50'
                 const news = document.querySelector('.news')
+                
                 fetch(URL)
                    .then(data => data.json())
                    .then(response => {
                       const articles = response.articles
-                      console.log(articles)
+                      //console.log(articles[0])
+                      localStorage.setItem('bookmarks', JSON.stringify(articles))
+                      let resu=''
+                         resu += `<h1>You have${response.totalResults} Results</h1>`
+                         res.innerHTML = resu;
                       let newsItem = ''
                       articles.forEach(article => {
                          newsItem += `
@@ -115,7 +120,7 @@ const toggle = document.querySelector('.fas');
                          </div>
                          <div class="news-url"> 
                             <a href="${article.url}"target="_blank">Go To Page</a>
-                            <i class="fas fa-bookmark"></i>
+                            <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
                          </div>  
                          <div class="news-published">
                               <h1>${article.publishedAt}</h1>
@@ -123,6 +128,14 @@ const toggle = document.querySelector('.fas');
                       </div>`
                       });
                       news.innerHTML = newsItem;
+                      console.log(JSON.parse(localStorage.getItem('bookmarks')))
+
+                      const book = document.querySelector('.news-url');
+                     console.log(book.classList)
+                      book.onclick = function (){
+                        console.log('hhhhhhh')
+                        localStorage.setItem('bookmarks', JSON.stringify(articles))
+                      }
                    })
                    .catch(error => {
                 
@@ -140,10 +153,10 @@ const toggle = document.querySelector('.fas');
                       fetch(URL)
                          .then(data => data.json())
                          .then(response => {
-
-                           
-
-                            const articles = response.articles
+                            const articles = response.article;
+                            let resu=''
+                            resu += `<h1>You have ${response.totalResults} Results</h1>`
+                            res.innerHTML = resu;
                             let newsItem = ''
                             articles.forEach(article => {
                                newsItem += `
@@ -161,8 +174,9 @@ const toggle = document.querySelector('.fas');
                                   <p> ${article.description}</p>   
                                </div>
                                <div class="news-url"> 
-                                  <a href="${article.url}" target="_blank">Go To Page</a>
-                               </div>  
+                               <a href="${article.url}"target="_blank">Go To Page</a>
+                               <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
+                            </div>   
                                <div class="news-published">
                                    <h1>${article.publishedAt}</h1>
                                </div>
@@ -175,4 +189,4 @@ const toggle = document.querySelector('.fas');
                          })
                        }
                      }
-            
+                   
