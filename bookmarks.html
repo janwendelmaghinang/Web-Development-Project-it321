@@ -13,7 +13,6 @@
 </head>
 <body>
   <div id="theme" class="dark">
-    
   <header>
           <h1>News Search & Bookmark</h1>
           <nav>
@@ -22,15 +21,11 @@
               <li><a href="bookmarks.html">Bookmarks</a></li>
             </ul>
             <div>
-                <button type="button" class="theme-change">
-                   <i class="clas"></i>
-                   <i class="fas fa-toggle-off"></i>
-                </button>
+                <button type="button" class="theme-change" ><i id="icon" class="fas fa-toggle-off"></i></button>
             </div>
           </nav>     
   </header>
   <!-- Forms Container -->
-  <div class="form-con">
   <div class="forms">   
     <div class="form-country">      
         <select id="selectCountry" class="formControl"> 
@@ -194,16 +189,15 @@
         <option value="xinhua-net">Xinhua Net</option>
         <option value="ynet">Ynet</option>
       </select>
-     </div>
-      <div class="input">
-           <input id="search" type="text"placeholder = "Search here">
-      </div>
-      <div class="formBtn">
-          <button class="sbtn" id="searchbtn"><i class="fas fa-search"></i></button>
-          <button class="source"><i class="fas fa-exchange-alt"></i></button>
-       </div>
   </div>
-</div>
+        <div class="input">
+           <input id="search" type="text"placeholder = "search here"class="formControl">
+        </div>
+        <div class="formControl">
+          <button id="searchbtn" type="submit" value=""><i class="fas fa-search"></i></button>
+          <button class="source"><i class="fas fa-exchange-alt"></i></button>
+        </div>
+  </div>
    <!-- result container -->
   <div class="result">
         <h1 class="resultCount"></h1>

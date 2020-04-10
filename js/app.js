@@ -1,59 +1,178 @@
 
-
+ 
  let selectionCountry = document.getElementById('selectCountry');
  let selectionCategory = document.getElementById('selectCategory');
+ let selectionSources = document.getElementById('selectSources');
  let searchQuery = document.getElementById('search');
- let results = document.getElementById('result');
- let btnSearch = document.querySelector('#searchbtn')
+ let btnSearch = document.querySelector('#searchbtn');
 
-//document.getElementById('searchbtn').addEventListener('click', loadUsers);
-//if (document.getElementById('searchbtn').addEventListener('click', loadUsers) == true) {
 
-  btnSearch.onclick = function loadUsers(){
-  var country = selectionCountry.options[selectionCountry.selectedIndex].value;  
-  var category = selectionCategory.options[selectionCategory.selectedIndex].value;
+const source = document.querySelector('.form-source');
+const country = document.querySelector('.form-country');
+const category = document.querySelector('.form-category');
+const themeBtn = document.querySelector('.theme-change');
+const btnChange = document.querySelector('.source');
+const themes = document.querySelector('#theme');
+const toggle = document.querySelector('.fas');
 
-const URL = 'https://newsapi.org/v2/top-headlines?q='+searchQuery.value+'&apiKey=ff55591e19c74c018563bc1852ae1dde&country='+country+'&category='+category+'&q=&page=1&pageSize=50'
-//const URL = 'https://newsapi.org/v2/top-headlines?q='+searchQuery.value+'&sources=abc-news&apiKey=ff55591e19c74c018563bc1852ae1dde&country='+country+'&category='+category+'&q=&page=1&pageSize=50'
-
-const news = document.querySelector('.news')
-
-//console.log(URL)
-fetch(URL)
-   .then(data => data.json())
-
-   .then(response => {
-      // const totalArticles = response.totalResults;
-       const articles = response.articles
-
-       let newsItem = ''
-       articles.forEach(article => {
-         newsItem += `
-         <div class="news-item">
-              <div class="news-image">
-                   <img src = "${article.urlToImage}"></img>
-              </div>
-           <div class="news-title">   
-              <h1> ${article.title} </h1> 
-           </div>
-           <div class="news-source"> 
-              <h1>${article.source.name}</h1>
-            </div>
-           <div class="news-desc">
-              <p> ${article.description}</p>   
-           </div>
-           <div class="news-url"> 
-              <a href="${article.url}">Go To Page</a>
-           </div>  
-       </div>`
-       });
-       news.innerHTML = newsItem;
-   })
-   .catch(error => {
-  
-   })
+ themeBtn.onclick = function (){
+    themes.classList.toggle('light')
+    themes.classList.toggle('dark')
+     toggle.classList.toggle('fa-toggle-off')
+     toggle.classList.toggle('fa-toggle-on')
  }
 
-//} else {
-     
-//}
+ btnChange.onclick = function (){
+      
+      source.classList.toggle('form-show')
+      country.classList.toggle('fhide')
+      category.classList.toggle('fhide')
+
+      source.classList.toggle('form-source')
+      country.classList.toggle('form-country')
+      category.classList.toggle('form-category')
+
+      selectionCategory.options.selectedIndex = 0;
+      selectionCountry.options.selectedIndex = 0;
+
+       if(source.className == "form-source"){
+         a();
+        }
+        if(source.className == "form-show"){
+         b();
+        }
+     }
+         if(source.className == "form-source"){
+            a();
+         } 
+
+         // const URL = 'https://newsapi.org/v2/top-headlines?&apiKey=ff55591e19c74c018563bc1852ae1dde&country=ph&category=health&q=&page=1&pageSize=50'
+         // const news = document.querySelector('.news')
+         // fetch(URL)
+         //    .then(data => data.json())
+         //    .then(response => {
+         //       const articles = response.articles
+         //       console.log(articles)
+         //       let newsItem = ''
+         //       articles.forEach(article => {
+         //          newsItem += `
+         //          <div class="news-item">
+         //             <div class="news-image">
+         //                   <img src = "${article.urlToImage}"></img>
+         //             </div>
+         //          <div class="news-title">   
+         //             <h1> ${article.title} </h1> 
+         //          </div>
+         //          <div class="news-source"> 
+         //             <h1>${article.source.name}</h1>
+         //             </div>
+         //          <div class="news-desc">
+         //             <p> ${article.description}</p>   
+         //          </div>
+         //          <div class="news-url"> 
+         //             <a href="${article.url}">Go To Page</a>
+         //          </div>  
+         //          <div class="news-published">
+         //               <h1>${article.publishedAt}</h1>
+         //          </div>
+         //       </div>`
+         //       });
+         //       news.innerHTML = newsItem;
+         //    })
+         //    .catch(error => {
+         
+         //    })
+
+
+   function a(){
+            btnSearch.onclick = function loadUsers(){
+                console.log('hi')
+                var country = selectionCountry.options[selectionCountry.selectedIndex].value;  
+                var category = selectionCategory.options[selectionCategory.selectedIndex].value;
+            
+                const URL = 'https://newsapi.org/v2/top-headlines?q='+searchQuery.value+'&apiKey=ff55591e19c74c018563bc1852ae1dde&country='+country+'&category='+category+'&q=&page=1&pageSize=50'
+                const news = document.querySelector('.news')
+                fetch(URL)
+                   .then(data => data.json())
+                   .then(response => {
+                      const articles = response.articles
+                      console.log(articles)
+                      let newsItem = ''
+                      articles.forEach(article => {
+                         newsItem += `
+                         <div class="news-item">
+                            <div class="news-image">
+                                  <img src = "${article.urlToImage}"></img>
+                            </div>
+                         <div class="news-title">   
+                            <h1> ${article.title} </h1> 
+                         </div>
+                         <div class="news-source"> 
+                            <h1>${article.source.name}</h1>
+                            </div>
+                         <div class="news-desc">
+                            <p> ${article.description}</p>   
+                         </div>
+                         <div class="news-url"> 
+                            <a href="${article.url}"target="_blank">Go To Page</a>
+                            <i class="fas fa-bookmark"></i>
+                         </div>  
+                         <div class="news-published">
+                              <h1>${article.publishedAt}</h1>
+                         </div>
+                      </div>`
+                      });
+                      news.innerHTML = newsItem;
+                   })
+                   .catch(error => {
+                
+                   })
+                 }
+               }
+   
+               function b(){
+                  btnSearch.onclick = function loadUsers(){
+                      console.log('hello')
+                      var source = selectionSources.options[selectionSources.selectedIndex].value;  
+                  
+                      const URL = 'https://newsapi.org/v2/top-headlines?q='+searchQuery.value+'&sources='+source+'&&apiKey=ff55591e19c74c018563bc1852ae1dde&country=&category=&q=&page=1&pageSize=50'
+                      const news = document.querySelector('.news')
+                      fetch(URL)
+                         .then(data => data.json())
+                         .then(response => {
+
+                           
+
+                            const articles = response.articles
+                            let newsItem = ''
+                            articles.forEach(article => {
+                               newsItem += `
+                               <div class="news-item">
+                                  <div class="news-image">
+                                        <img src = "${article.urlToImage}"></img>
+                                  </div>
+                               <div class="news-title">   
+                                  <h1> ${article.title} </h1> 
+                               </div>
+                               <div class="news-source"> 
+                                  <h1>${article.source.name}</h1>
+                                  </div>
+                               <div class="news-desc">
+                                  <p> ${article.description}</p>   
+                               </div>
+                               <div class="news-url"> 
+                                  <a href="${article.url}" target="_blank">Go To Page</a>
+                               </div>  
+                               <div class="news-published">
+                                   <h1>${article.publishedAt}</h1>
+                               </div>
+                            </div>`
+                            });
+                            news.innerHTML = newsItem;
+                         })
+                         .catch(error => {
+                      
+                         })
+                       }
+                     }
+            

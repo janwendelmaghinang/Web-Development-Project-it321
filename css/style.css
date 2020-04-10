@@ -4,17 +4,12 @@
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
-  body{
-    background-color: gray;
-  }
-  
+
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgb(0, 119, 128);
     opacity: .8;
-    color: #ffffff;
     padding: 1rem;
   }
   .theme button{
@@ -24,10 +19,10 @@
     max-width: 1024px;
     margin: auto;
   }
- .form-source{
+  .form-source{
    display: none;
  }
- .source-show{
+ .form-show{
    display: block;
  }
  .source-show .formControl{
@@ -42,7 +37,8 @@
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
-    
+    padding: 30px;
+    margin-top: 0;
   }
   .formControl{
     width: 250px;
@@ -51,35 +47,39 @@
     padding: 8px;
     outline: none;
   }
-  .hide{
-    display: none;
-  }
- 
+  .forms input{
+    width: 250px;
+    border-radius: 20px;
+    border: none;
+    padding: 8px;
+    outline: none;
+  } 
   /* NEws Container */
 
-  .news-container .news {
+  .news {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
     margin-top: 1rem;
     padding: 0;
+    width: 100% ;
   }
+
   .news .news-item {
     display: grid;
     grid-template-rows: 1fr;
-    background-color: #ffffff;
-    
+    background-color: whitesmoke;
   }
   .news-item .news-url{
     display: flex;
     align-content: center;
+    justify-content:space-between;
   }
   .news .news-item .news-url a{
     text-decoration: none;
     list-style: none;
     background-color: black;
     color: #fff;
- 
   }
   .news-item .news-image img{
     width: 100%;
@@ -87,28 +87,26 @@
     padding: 0;
     margin: 0;
   }
-
- 
   .news-item .news-title h1{
     font-size: 1rem;
   }
-
   .news .news-item .news-desc p{
     font-size: 1rem;
-   
   }
-  
   .news .news-item .news-source h1{
     font-size: 15px;
     opacity: .8;
     color: black;
   }
-  .news-source, .news-title , .news-desc , .news-url {
+  .news-item .news-published h1{
+    font-size: 0.5rem;
+  }
+  .news-source, .news-title , .news-desc , .news-url , .news-published {
     padding: 1rem;
   }
+
   /* navigation  */
   header h1{
-    
     font-size: 18px;
   }
   nav{
@@ -119,24 +117,127 @@
     list-style: none;
     padding: 0;
   }
-  
   nav ul li {
     display: inline-block;
   }
   nav ul li a {
     display: block;
     text-decoration: none;
-    color: #fff;
     padding: 1rem;
   }
-  nav ul li a:hover {
-    background: #fff;
-    color: green;
+  nav ul li a:hover{
+    background: gray;
+    color: white;
   }
+ 
+/* toggle */
+.dark{
+  background-color: gray;
+}
+.dark header{
+    background: rgb(0, 119, 128);
+    color: white;
+    }
+.dark header ul li a{
+      color:  white;
+    }
+.dark .forms{
+  background: rgb(141, 192, 177);
+}
+.light header{
+      background-color: white;
+      color: black
+    }
+.light header ul li a{
+      color: black;
+    }
+.light header{
+  outline: 1px solid gray;
+  border: none;
+}
+.light .formControl{
+  border: 1px solid gray; 
+}
+.light .formBtn{
+  border: none;
+  outline: none;
+}
+.light .source{
+  background-color: gray ;
+  height: 2rem;
+  width: 2rem;
+  color: white;
+  outline: none;
+  border: none;
+}
+.light .sbtn{
+  background-color: gray ;
+  height: 2rem;
+  width: 2rem;
+  color: white;
+  outline: none;
+  border: none;
+}
+.dark .source{
+  background-color: black;
+  height: 2rem;
+  width: 2rem;
+  color: white;
+  outline: none;
+  border: none;
+}
+.dark .sbtn{
+  background-color: black;
+  height: 2rem;
+  width: 2rem;
+  color: white;
+  outline: none;
+  border: none;
+}
+.light input{
+  border: 1px solid gray;
+}
+/* responsive layout */
+    
+@media (max-width: 700px) {
+  .news {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-top: 1rem;
+    padding: 0;
+    width: 100% ;
+  }
+
   .forms{
-    padding: 30px;
-    background: rgb(141, 192, 177);
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    
     margin-top: 0;
   }
-/* toggle */
-
+  .news-container {
+    max-width: 600px;
+    margin: auto;
+  }
+}
+    
+@media (max-width: 500px) {
+  .news {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+    padding: 0;
+    width: 100% ;
+  }
+  .news-container {
+    max-width: 450px;
+    margin: auto;
+  }
+  .forms{
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+}
