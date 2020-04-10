@@ -97,6 +97,7 @@
                    .then(data => data.json())
                    .then(response => {
                       const articles = response.articles
+                      let mark = 0;
                       //console.log(articles[0])
                       localStorage.setItem('bookmarks', JSON.stringify(articles))
                       let resu=''
@@ -120,22 +121,24 @@
                          </div>
                          <div class="news-url"> 
                             <a href="${article.url}"target="_blank">Go To Page</a>
-                            <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
+                            <button class= "btn-bookmarks"id="${mark}"><i class="fas fa-bookmark"></i></button>
                          </div>  
                          <div class="news-published">
-                              <h1>${article.publishedAt}</h1>
+                              <h1>Published: ${(article.publishedAt).substr(0,10)}</h1>
                          </div>
                       </div>`
+                      mark++;
                       });
                       news.innerHTML = newsItem;
-                      console.log(JSON.parse(localStorage.getItem('bookmarks')))
+                     
+                     //  console.log(JSON.parse(localStorage.getItem('bookmarks')))
 
-                      const book = document.querySelector('.news-url');
-                     console.log(book.classList)
-                      book.onclick = function (){
-                        console.log('hhhhhhh')
-                        localStorage.setItem('bookmarks', JSON.stringify(articles))
-                      }
+                     //  const book = document.querySelector('.news-url');
+                     // console.log(book.classList)
+                     //  book.onclick = function (){
+                     //    console.log('hhhhhhh')
+                     //    localStorage.setItem('bookmarks', JSON.stringify(articles))
+                  //     }
                    })
                    .catch(error => {
                 
