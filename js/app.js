@@ -100,8 +100,8 @@
                       //console.log(articles[0])
                       localStorage.setItem('bookmarks', JSON.stringify(articles))
                       let resu=''
-                         resu += `<h1>You have${response.totalResults} Results</h1>`
-                         res.innerHTML = resu;
+                       resu += `<h1>You have${response.totalResults} Results</h1>`
+                     res.innerHTML = resu;
                       let newsItem = ''
                       articles.forEach(article => {
                          newsItem += `
@@ -153,40 +153,49 @@
                       fetch(URL)
                          .then(data => data.json())
                          .then(response => {
-                            const articles = response.article;
-                            let resu=''
-                            resu += `<h1>You have ${response.totalResults} Results</h1>`
-                            res.innerHTML = resu;
-                            let newsItem = ''
-                            articles.forEach(article => {
-                               newsItem += `
-                               <div class="news-item">
-                                  <div class="news-image">
-                                        <img src = "${article.urlToImage}"></img>
-                                  </div>
-                               <div class="news-title">   
-                                  <h1> ${article.title} </h1> 
-                               </div>
-                               <div class="news-source"> 
-                                  <h1>${article.source.name}</h1>
-                                  </div>
-                               <div class="news-desc">
-                                  <p> ${article.description}</p>   
-                               </div>
-                               <div class="news-url"> 
-                               <a href="${article.url}"target="_blank">Go To Page</a>
-                               <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
-                            </div>   
-                               <div class="news-published">
+                           const articles = response.articles
+                           //console.log(articles[0])
+                           localStorage.setItem('bookmarks', JSON.stringify(articles))
+                           let resu=''
+                            resu += `<h1>You have${response.totalResults} Results</h1>`
+                          res.innerHTML = resu;
+                           let newsItem = ''
+                           articles.forEach(article => {
+                              newsItem += `
+                              <div class="news-item">
+                                 <div class="news-image">
+                                       <img src = "${article.urlToImage}"></img>
+                                 </div>
+                              <div class="news-title">   
+                                 <h1> ${article.title} </h1> 
+                              </div>
+                              <div class="news-source"> 
+                                 <h1>${article.source.name}</h1>
+                                 </div>
+                              <div class="news-desc">
+                                 <p> ${article.description}</p>   
+                              </div>
+                              <div class="news-url"> 
+                                 <a href="${article.url}"target="_blank">Go To Page</a>
+                                 <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
+                              </div>  
+                              <div class="news-published">
                                    <h1>${article.publishedAt}</h1>
-                               </div>
-                            </div>`
-                            });
-                            news.innerHTML = newsItem;
-                         })
-                         .catch(error => {
-                      
-                         })
-                       }
-                     }
-                   
+                              </div>
+                           </div>`
+                           });
+                           news.innerHTML = newsItem;
+                           console.log(JSON.parse(localStorage.getItem('bookmarks')))
+     
+                           const book = document.querySelector('.news-url');
+                          console.log(book.classList)
+                           book.onclick = function (){
+                             console.log('hhhhhhh')
+                             localStorage.setItem('bookmarks', JSON.stringify(articles))
+                           }
+                        })
+                        .catch(error => {
+                     
+                        })
+                      }
+                    }
