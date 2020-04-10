@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
    
   <link rel="stylesheet" href="./css/style.css">
-  <script src="https://kit.fontawesome.com/247cf9485d.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
-  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
-  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
- 
 </head>
 <body>
   <div id="theme" class="dark">
@@ -34,7 +29,7 @@
           </nav>     
   </header>
   <!-- Forms Container -->
-  <div class="form-con">
+  <div class="form-con" style="display: none;">
   <div class="forms">   
     <div class="form-country">      
         <select id="selectCountry" class="formControl"> 
@@ -219,7 +214,39 @@
 </div>
 
   <script src="./js/app.js"></script>
-  <script src="book.js"></script>
+  <script>
+    const news = document.querySelector('.news')
+    const articles = JSON.parse(localStorage.getItem('bookmarks'))
+    // const res = document.querySelector('.resultCount')
+       localStorage.setItem('bookmarks', JSON.stringify(articles));
+       let newsItem = ''
+                      articles.forEach(article => {
+                         newsItem += `
+                         <div class="news-item">
+                            <div class="news-image">
+                                  <img src = "${article.urlToImage}"></img>
+                            </div>
+                         <div class="news-title">   
+                            <h1> ${article.title} </h1> 
+                         </div>
+                         <div class="news-source"> 
+                            <h1>${article.source.name}</h1>
+                            </div>
+                         <div class="news-desc">
+                            <p> ${article.description}</p>   
+                         </div>
+                         <div class="news-url"> 
+                            <a href="${article.url}"target="_blank">Go To Page</a>
+                            <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
+                         </div>  
+                         <div class="news-published">
+                              <h1>${article.publishedAt}</h1>
+                         </div>
+                      </div>`
+                     });
+       news.innerHTML = newsItem
+
+</script>
   
 </body>
 </html>
