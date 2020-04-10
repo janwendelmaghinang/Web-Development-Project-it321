@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
    
   <link rel="stylesheet" href="./css/style.css">
+  <script src="https://kit.fontawesome.com/247cf9485d.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
+ 
 </head>
 <body>
   <div id="theme" class="dark">
@@ -21,10 +26,15 @@
               <li><a href="index.html">Top News</a></li>
               <li><a href="bookmarks.html">Bookmarks</a></li>
             </ul>
+
             <div class="btn-theme">
                 <button type="button" class="theme-change">
                 <i class="fas fa-toggle-on"></i>
                 </button>
+
+            <div class="theme">
+                <button type="button"><i class="fas fa-toggle-off"></i></button>
+
             </div>
           </nav>     
   </header>
@@ -33,6 +43,9 @@
   <div class="forms">   
     <div class="form-country">      
         <select id="selectCountry" class="formControl"> 
+
+
+          <option value=""selected>Select country</option>
           <option value="us">United States of America</option>
           <option value="gb">United Kingdom</option>
           <option value="ca">Canada</option>
@@ -201,7 +214,17 @@
           <button class="source"><i class="fas fa-exchange-alt"></i></button>
       </div>
   </div>
+
 </div>
+
+        <div class="input">
+           <input style="padding: 10px;" id="search" type="text"placeholder = "Key Word"class="formControl"></div>
+        <div class="formControl">
+          <button id="searchbtn" type="Search"><i class="fas fa-search"></i></button>
+          <button class="source"><i class="fas fa-exchange-alt"></i></button>
+        </div>
+  </div>
+
    <!-- result container -->
   <div class="result">
         <div class="resultCount"></div>
