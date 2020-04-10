@@ -101,7 +101,7 @@
                       //console.log(articles[0])
                       localStorage.setItem('bookmarks', JSON.stringify(articles))
                       let resu=''
-                       resu += `<h1>You have${response.totalResults} Results</h1>`
+                       resu += `<h1>You have ${response.totalResults} Results</h1>`
                      res.innerHTML = resu;
                       let newsItem = ''
                       articles.forEach(article => {
@@ -160,7 +160,7 @@
                            //console.log(articles[0])
                            localStorage.setItem('bookmarks', JSON.stringify(articles))
                            let resu=''
-                            resu += `<h1>You have${response.totalResults} Results</h1>`
+                            resu += `<h1>You have ${response.totalResults} Results</h1>`
                           res.innerHTML = resu;
                            let newsItem = ''
                            articles.forEach(article => {
@@ -183,7 +183,7 @@
                                  <button class= "btn-bookmarks"><i class="fas fa-bookmark"></i></button>
                               </div>  
                               <div class="news-published">
-                                   <h1>${article.publishedAt}</h1>
+                              <h1>Published: ${(article.publishedAt).substr(0,10)}</h1>
                               </div>
                            </div>`
                            });
